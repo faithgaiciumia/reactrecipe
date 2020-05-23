@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap');
+. {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #C4A4D4;
+    font-family: 'Poppins', sans-serif;
+}
+.container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 500px;
+}
+ 
+.meal {
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+
+}
+.meal-img {
+    flex: 1;
+}
+.meal-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.meal-details {
+    padding: 20px;
+    flex: 2;
+}
+.meal-title {
+   margin: 0 0 20px;
+}
+.meal-instruction {
+
+}
+.meal-info{
+
+}
