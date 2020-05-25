@@ -9,6 +9,7 @@ function App() {
     <div className="App">
       Hello 
       <section className="container">
+        <h2>Featured Meal</h2>
       <RandomMeals/>
       </section>
       

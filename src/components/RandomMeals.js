@@ -33,11 +33,11 @@ useEffect(() => {
                 <img src={strMealThumb} alt={strMeal} />
             </div>
             <div className="meal-details">
-                <h2 className="meal-title">
+                <h3 className="meal-title">
                     {strMeal}
-                </h2>
+                </h3>
                 <p className="meal-instruction">
-                    {strInstructions.substring(0,100) + "..."}
+                    {strInstructions.substring(0,200) + "..."}
                 </p>
                 <ul className="meal-info">
                     <li>
@@ -53,6 +53,9 @@ useEffect(() => {
                         </strong>
                     </li>
                 </ul>
+                <button className="btn">
+                    View Recipe <i className="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
     );

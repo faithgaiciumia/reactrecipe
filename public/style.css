@@ -7,6 +7,19 @@ body {
     background-color: #C4A4D4;
     font-family: 'Poppins', sans-serif;
 }
+h2 {
+    display: inline-block;
+    border-bottom: 2px solid;
+}
+.btn {
+    background-color: #F7930A;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    color: #fff;
+    border: none;
+}
 .container {
     padding: 20px;
     margin: 0 auto;
@@ -15,13 +28,15 @@ body {
 }
  
 .meal {
-    background-color: #ffffff;
-    border-radius: 5px;
-    overflow: hidden;
+    background-color: #ffffff;    
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);    
     display: flex;
 
 }
 .meal-img {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
     flex: 1;
 }
 .meal-img img {
@@ -30,15 +45,36 @@ body {
     object-fit: cover;
 }
 .meal-details {
-    padding: 20px;
+    padding: 30px;
+    position: relative;
     flex: 2;
 }
 .meal-title {
+    color: #C4A4D4;
    margin: 0 0 20px;
 }
 .meal-instruction {
+    font-size: 14px;
 
 }
 .meal-info{
-
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+.meal-info li {
+    color: #555555;
+    font-size: 12px;
+    font-weight: 300;
+    margin-right: 30px;    
+}
+.meal-info li strong {
+    color: #C4A4D4;
+    font-size: 16px;
+    display: block;
+}
+.meal-details .btn {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
 }
