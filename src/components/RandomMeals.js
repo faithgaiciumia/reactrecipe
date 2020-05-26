@@ -1,33 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const RandomMeals = () => {
-const [meal, setMeal] = useState(undefined);
-
-useEffect(() => {
-    async function getMeal(){
-     const res = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
-     const data = await res.json();
-     console.log(data);
-
-     setMeal(data.meals[0]);     
-   }
-   getMeal();    
-  }, []);
-
-  if(!meal) return null;
-
-  console.log("meal is"+meal.strMeal);
-
+const RandomMeals = (props) => {
+  if(!props.meal) return null;  
   const{
       strMeal,
       strMealThumb,
       strInstructions,
       strArea,
       strCategory
-  } = meal;
-
-
+  } = props.meal;
     return(
+        <section>
+            <h2>Featured Meal</h2> 
         <div className="meal">
             <div className="meal-img"> 
                 <img src={strMealThumb} alt={strMeal} />
@@ -54,10 +40,11 @@ useEffect(() => {
                     </li>
                 </ul>
                 <button className="btn">
-                    View Recipe <i className="fas fa-arrow-right"></i>
+                    View Recipe <FontAwesomeIcon icon={faLongArrowAltRight} /> 
                 </button>
             </div>
         </div>
+        </section>
     );
 }
 

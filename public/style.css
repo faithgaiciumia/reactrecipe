@@ -5,19 +5,26 @@
 
 body {
     background-color: #C4A4D4;
+    color: #000000;
     font-family: 'Poppins', sans-serif;
 }
 h2 {
     display: inline-block;
+    font-size: 2rem;
+    color: #000000;
     border-bottom: 2px solid;
 }
 .btn {
     background-color: #F7930A;
     font-size: 0.8rem;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15); 
     border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
     text-transform: uppercase;
-    padding: 15px 25px;
+    padding: 20px 35px;
     color: #fff;
+    letter-spacing: 0.5px;
     border: none;
 }
 .container {
@@ -25,6 +32,9 @@ h2 {
     margin: 0 auto;
     max-width: 100%;
     width: 500px;
+}
+.grid {
+    display: grid;
 }
  
 .meal {
