@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Meal from './Components/Meal';
+import SearchResults from './Components/SearchResults';
 
 import { Button } from 'react-bootstrap';
+
 class App extends Component{
     //TODO
     //1. Display Random Meal
     //2. Search and Display Meal
   state = {
       meals: "",
-      inputMeal:""
+      inputMeal:"",
+      fetchedMeals:"",      
   }  
   onChangeHandler(event){
       this.setState({inputMeal: event.target.value});
@@ -16,8 +19,15 @@ class App extends Component{
 
   }
   handleSubmit(event){
-      console.log(this.state.inputMeal);
+      this.fetchSearchMeal();
       event.preventDefault();
+  }
+  fetchSearchMeal(){
+      fetch("https://www.themealdb.com/api/json/v1/1/search.php?s="+this.state.inputMeal)
+      .then(res => res.json())
+      .then((res)=> {
+          this.setState({fetchedMeals:res.meals});          
+      }, {})
   }
   componentDidMount () {
       fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -37,8 +47,8 @@ class App extends Component{
             <input className="form-control" type="text" placeholder="Search Meal" aria-label="Search" onChange={event => this.onChangeHandler(event)}/>
             <Button variant="primary" type="submit" onClick={event => this.handleSubmit(event)}>
                  Submit
-            </Button>
-            <h1>Search Results:</h1>
+            </Button>                        
+            <SearchResults results={this.state.fetchedMeals}/>
             <Meal meal={this.state.meals}/>            
          </div>
      );
