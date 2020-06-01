@@ -1,56 +1,49 @@
 import React, { Component } from 'react';
-import {RandomMeals} from './components';
+import Meal from './Components/Meal';
 
-//TODO
-//1. Search for meals...
-//2. Display the results...
-//3. Random/featured meal
-//4. Favorite recipe
+import { Button } from 'react-bootstrap';
 class App extends Component{
+    //TODO
+    //1. Display Random Meal
+    //2. Search and Display Meal
   state = {
-    inputMeal: "",
-    meals: ""
-  }
-  onChangeHandler(event) {
-   this.setState({inputMeal: event.target.value});
+      meals: "",
+      inputMeal:""
+  }  
+  onChangeHandler(event){
+      this.setState({inputMeal: event.target.value});
+      console.log(this.state.inputMeal);
+
   }
   handleSubmit(event){
-    //alert('A name was submitted: '+ this.state.inputMeal);
-    this.fetchMeals(this.state.inputMeal)
-    event.preventDefault();
+      console.log(this.state.inputMeal);
+      event.preventDefault();
   }
-  async fetchMeals(meal){   
-    const res = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?s='+ meal);
-    const data = await res.json();        
-    this.setState({
-      meals: data.meals[0]
-    });
-
+  componentDidMount () {
+      fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      .then(res=> res.json())
+      .then(
+          (res) => {
+              this.setState ({
+                  meals: res.meals[0]
+              });
+              console.log(this.state.meals);
+          }, {}
+      )
   }
-  render () {
-    return (
-      <div className="App">
-        <form onSubmit={event => this.handleSubmit(event)}>
-        <label>Search Meal: </label>
-        <input type="text" value={this.state.inputMeal} onChange={event => this.onChangeHandler(event)}/>
-        <input type="submit" value="Submit" />
-        </form>
-        <section className="grid">
-        <RandomMeals meal={this.state.meals}/> 
-        <RandomMeals meal={this.state.meals}/> 
-        </section>                   
-        <section className="container">
-          <h2>
-            Search Results:
-          </h2>
-          <RandomMeals meal={this.state.meals}/>
-          <RandomMeals meal={this.state.meals}/>
-          </section>  
-      </div>
-    );
-  }
-  
-  
+ render () {
+     return (            
+          <div>
+            <input className="form-control" type="text" placeholder="Search Meal" aria-label="Search" onChange={event => this.onChangeHandler(event)}/>
+            <Button variant="primary" type="submit" onClick={event => this.handleSubmit(event)}>
+                 Submit
+            </Button>
+            <h1>Search Results:</h1>
+            <Meal meal={this.state.meals}/>            
+         </div>
+     );
+ }
 }
+  
 
 export default App;
