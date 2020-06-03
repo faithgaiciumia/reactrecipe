@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import Meal from './Components/Meal';
 import SearchResults from './Components/SearchResults';
+import TopBar from './Components/TopBar';
 
 import { Button } from 'react-bootstrap';
 
 class App extends Component{
     //TODO
-    //1. Display Random Meal
-    //2. Search and Display Meal
+    //1. Display Random Meal 
+    //2. Search and Display Meal ✔ 
+
   state = {
-      meals: "",
+      randomMeal: "",
       inputMeal:"",
       fetchedMeals:"",      
   }  
   onChangeHandler(event){
-      this.setState({inputMeal: event.target.value});
+      this.setState({inputMeal: event.target.value});   
       console.log(this.state.inputMeal);
-
   }
   handleSubmit(event){
       this.fetchSearchMeal();
@@ -30,12 +31,12 @@ class App extends Component{
       }, {})
   }
   componentDidMount () {
-      fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+      fetch("https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood")
       .then(res=> res.json())
       .then(
           (res) => {
               this.setState ({
-                  meals: res.meals[0]
+                  randomMeal:res.meals
               });
               console.log(this.state.meals);
           }, {}
@@ -44,12 +45,9 @@ class App extends Component{
  render () {
      return (            
           <div>
-            <input className="form-control" type="text" placeholder="Search Meal" aria-label="Search" onChange={event => this.onChangeHandler(event)}/>
-            <Button variant="primary" type="submit" onClick={event => this.handleSubmit(event)}>
-                 Submit
-            </Button>                        
+            <TopBar changed={event => this.onChangeHandler(event)} submit={event => this.handleSubmit(event)}/>                                    
             <SearchResults results={this.state.fetchedMeals}/>
-            <Meal meal={this.state.meals}/>            
+            <Meal randomMeals={this.state.randomMeal}/>            
          </div>
      );
  }

@@ -1,59 +1,37 @@
 import React from 'react';
-import {Media} from 'react-bootstrap';
+import {Media,Card} from 'react-bootstrap';
 
-const meal = (props) => {
-    console.log(props.meal);
+const meal = (props) => {    
+  const meal = props.randomMeals;
+  console.log(meal);
+    if (meal===undefined){
+      return (
+          null
+      );
+  }
+  else {
+  //   const cardList = meal.map(meal => {
+  //     return (                                              
+  //             <Card key={meal.idMeal}>
+  //             <Card.Img variant="top" src={meal.strMealThumb} />
+  //             <Card.Body>
+  //                 <Card.Title> {meal.strMeal} </Card.Title>
+  //                 <Card.Text>
+  //                 {meal.strInstructions.substring(0,200)+"..."}
+  //                 </Card.Text>
+  //             </Card.Body>                    
+  //             </Card>               
+  //     );
+  // });
     return (
-<ul className="list-unstyled" style={{padding:"20px"}}>
-  <Media as="li">
-    <img
-      width={200}
-      height={200}
-      className="mr-3"
-      src={props.meal.strMealThumb}
-      alt="Generic placeholder"
-    />
-    <Media.Body>
-    <h5>{props.meal.strMeal}</h5>
-      <p>
-        {props.meal.strInstructions}
-      </p>
-    </Media.Body>
-  </Media>
-
-  <Media as="li">
-    <img
-      width={200}
-      height={200}
-      className="mr-3"
-      src={props.meal.strMealThumb}
-      alt="Generic placeholder"
-    />
-    <Media.Body>
-    <h5>{props.meal.strMeal}</h5>
-      <p>
-        {props.meal.strInstructions}
-      </p>
-    </Media.Body>
-  </Media>
-
-  <Media as="li">
-    <img
-      width={200}
-      height={200}
-      className="mr-3"
-      src={props.meal.strMealThumb}
-      alt="Generic placeholder"
-    />
-    <Media.Body>
-    <h5>{props.meal.strMeal}</h5>
-      <p>
-        {props.meal.strInstructions}
-      </p>
-    </Media.Body>
-  </Media>
-</ul>
+      <div>
+        <h3>Featured Meal: </h3>
+        working on thiss
+      </div>
     );
+  }
+  
+  
+  
 }
-
 export default meal;

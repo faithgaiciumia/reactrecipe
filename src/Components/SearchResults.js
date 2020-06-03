@@ -7,9 +7,7 @@ const SearchResults = (props) => {
     const meal=props.results;           
     if (meal.length===0){
         return (
-            <div>
-                Search Not done
-            </div>
+            null
         );
     }
     else {
@@ -20,18 +18,15 @@ const SearchResults = (props) => {
                     <Card.Body>
                         <Card.Title> {meal.strMeal} </Card.Title>
                         <Card.Text>
-                        {meal.strInstructions.substring(0,200)}
+                        {meal.strInstructions.substring(0,200)+"..."}
                         </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
+                    </Card.Body>                    
                     </Card>               
             )
         });
         return (           
             <div>
-                <h1>Search Results:</h1>
+                <h3>Search Results:</h3>
                 <CardGroup>    
                     {cardList}              
                 </CardGroup>
