@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Meal from './Components/Meal';
+import MealComponent from './Components/Meal';
 import SearchResults from './Components/SearchResults';
 import TopBar from './Components/TopBar';
 
@@ -11,7 +11,7 @@ class App extends Component{
     //2. Search and Display Meal ✔ 
 
   state = {
-      randomMeal: "",
+      randomMeal: [],
       inputMeal:"",
       fetchedMeals:"",      
   }  
@@ -37,8 +37,7 @@ class App extends Component{
           (res) => {
               this.setState ({
                   randomMeal:res.meals
-              });
-              console.log(this.state.meals);
+              });             
           }, {}
       )
   }
@@ -46,8 +45,8 @@ class App extends Component{
      return (            
           <div>
             <TopBar changed={event => this.onChangeHandler(event)} submit={event => this.handleSubmit(event)}/>                                    
-            <SearchResults results={this.state.fetchedMeals}/>
-            <Meal randomMeals={this.state.randomMeal}/>            
+            <SearchResults results={this.state.fetchedMeals}/>           
+            <MealComponent randomMeals={this.state.randomMeal}/>            
          </div>
      );
  }

@@ -4,7 +4,8 @@ import CardGroup from 'react-bootstrap/CardGroup';
 
 
 const SearchResults = (props) => {
-    const meal=props.results;           
+    const meal=props.results; 
+    console.log(meal);          
     if (meal.length===0){
         return (
             null

@@ -1,37 +1,34 @@
 import React from 'react';
-import {Media,Card} from 'react-bootstrap';
+import { Media, Card, CardGroup } from 'react-bootstrap';
 
-const meal = (props) => {    
-  const meal = props.randomMeals;
-  console.log(meal);
-    if (meal===undefined){
-      return (
-          null
-      );
+const MealComponent = (props) => {
+  const DisplayMeals = props.randomMeals;
+  console.log(DisplayMeals);
+  if (DisplayMeals === undefined){
+    return (
+        null
+    );
   }
   else {
-  //   const cardList = meal.map(meal => {
-  //     return (                                              
-  //             <Card key={meal.idMeal}>
-  //             <Card.Img variant="top" src={meal.strMealThumb} />
-  //             <Card.Body>
-  //                 <Card.Title> {meal.strMeal} </Card.Title>
-  //                 <Card.Text>
-  //                 {meal.strInstructions.substring(0,200)+"..."}
-  //                 </Card.Text>
-  //             </Card.Body>                    
-  //             </Card>               
-  //     );
-  // });
+    const mediaList = DisplayMeals.map(displayMeal => {
     return (
-      <div>
-        <h3>Featured Meal: </h3>
-        working on thiss
-      </div>
+    <Card>
+    <Card.Body>
+      <Card.Text>
+        {displayMeal.strMeal}
+      </Card.Text>
+    </Card.Body>
+    <Card.Img variant="bottom" src= {displayMeal.strMealThumb} style={{height: "100px", width: "100px"}} />
+  </Card>
+    );
+    });
+    return (
+      <ol>
+        {mediaList}
+      </ol>
     );
   }
   
-  
-  
 }
-export default meal;
+
+export default MealComponent;
