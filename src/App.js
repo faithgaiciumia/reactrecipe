@@ -43,10 +43,13 @@ class App extends Component{
   }
  render () {
      return (            
-          <div>
-            <TopBar changed={event => this.onChangeHandler(event)} submit={event => this.handleSubmit(event)}/>                                    
-            <SearchResults results={this.state.fetchedMeals}/>           
-            <MealComponent randomMeals={this.state.randomMeal}/>            
+          <div className="grid grid-960">
+            <header className="headerimg" >
+                <img className="img" src="https://images.pexels.com/photos/4197438/pexels-photo-4197438.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="header"/>
+            </header>
+            <TopBar className="navbar" changed={event => this.onChangeHandler(event)} submit={event => this.handleSubmit(event)}/>                                    
+            <SearchResults className="navbar" results={this.state.fetchedMeals}/>           
+            <MealComponent className="navbar" randomMeals={this.state.randomMeal}/>            
          </div>
      );
  }

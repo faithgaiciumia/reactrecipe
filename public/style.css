@@ -2,3 +2,33 @@ h3 {
     position: relative;
     left: 20px;
 }
+.grid-960 {
+    display: grid;
+    width: 960px;
+    margin: auto;  
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;      
+  }
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .headerimg {
+    grid-column-end: span 12;   
+    display: block;
+  } 
+  .headerimg img {
+    max-height:500px;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+  }
+  .navbar {
+    grid-column-end:span 12;
+  }
+  .mealcard {
+    grid-column-end: span 4;
+  }
+  * {
+    box-sizing: border-box;
+  }

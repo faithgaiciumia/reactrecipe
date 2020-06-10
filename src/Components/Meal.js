@@ -12,20 +12,30 @@ const MealComponent = (props) => {
   else {
     const mediaList = DisplayMeals.map(displayMeal => {
     return (
-    <Card>
-    <Card.Body>
-      <Card.Text>
-        {displayMeal.strMeal}
-      </Card.Text>
-    </Card.Body>
-    <Card.Img variant="bottom" src= {displayMeal.strMealThumb} style={{height: "100px", width: "100px"}} />
-  </Card>
+  //   <Card>
+  //   <Card.Body>
+  //     <Card.Text>
+  //       {displayMeal.strMeal}
+  //     </Card.Text>
+  //   </Card.Body>
+  //   <Card.Img variant="bottom" src= {displayMeal.strMealThumb} style={{height: "100px", width: "100px"}} />
+  // </Card>
+  <div key={displayMeal.idMeal}>
+    <h4>
+      <b>
+      {displayMeal.strMeal}
+      </b>
+    </h4>
+    <div>
+      <img src={displayMeal.strMealThumb}/>
+    </div>
+  </div>
     );
     });
     return (
-      <ol>
+      <div >
         {mediaList}
-      </ol>
+      </div>
     );
   }
   
